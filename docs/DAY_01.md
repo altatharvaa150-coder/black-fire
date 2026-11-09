@@ -14,7 +14,8 @@
 | Check | Observed result |
 |---|---|
 | Backend tests | 15 passed in 4.44 seconds |
-| Frontend | TypeScript check and production build passed |
+| Frontend | TypeScript check and production build passed locally and in Linux CI |
+| GitHub Actions | Both web/API jobs passed for implementation commit `97f40b6`; Linux tests and Docker build succeeded |
 | Production assets | JavaScript 236.81 kB / 73.90 kB gzip; CSS 15.37 kB / 4.29 kB gzip |
 | Python static checks | Ruff passed |
 | Dependency checks | npm reported 0 vulnerabilities; pip check reported no broken requirements |
@@ -36,7 +37,7 @@ The restricted development sandbox also prevented local sockets and temporary te
 
 The user explicitly chose **build the mock-backed slice first**, because Gemini, Cloudflare, and Render accounts are not set up. Consequently, the original full day-one exit gate is **not complete**: two genuine model routes and public frontend/API hosting remain pending. Supabase project/schema is live; frontend/API are local. Supabase sign-in and the full browser → API → cloud database path still need a provisioned demo account and a live end-to-end check. Local SQLite end-to-end flow is verified.
 
-Docker was unavailable on the development machine. The Linux CI workflow includes a container build, but its result must be checked after push.
+Docker was unavailable on the development machine. The Linux CI workflow successfully built the container after push. [Verified workflow run](https://github.com/altatharvaa150-coder/black-fire/actions/runs/42593167734).
 
 ## Next work
 

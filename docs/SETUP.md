@@ -43,7 +43,7 @@ The user chose to build the mock slice before setting up Gemini, Cloudflare, and
 4. Test sign-in → mock run → history reload on the hosted URLs, and cross-user access denial. Record a clip and actual URLs in the daily report.
 5. A restart must preserve Supabase data. Render local storage is not used in hosted mode.
 
-Docker build command: `docker build -f infra/Dockerfile -t black-fire-api .`. Docker was not installed locally; the GitHub workflow performs this build on Linux.
+Docker build command: `docker build -f infra/Dockerfile -t black-fire-api .`. Docker was not installed locally; the GitHub workflow successfully built it on Linux for implementation commit `97f40b6`.
 
 ## Live provider gates
 
