@@ -1,5 +1,7 @@
 # Configuration and deployment
 
+**Direction update:** The next milestone is a local Chrome extension with user-controlled handoff between actual web apps. Follow [PRODUCT_DIRECTION.md](PRODUCT_DIRECTION.md). This document records setup for the existing mock foundation; provider API credentials and the live-provider gates below are historical/deferred and are not prerequisites for the browser milestone. Extension installation instructions will be added when the extension exists.
+
 ## Created cloud resource
 
 Supabase project **black-fire**, Mumbai (`ap-south-1`), in the user-selected organization. Organization plan was verified as Free. Project ref: `iynrlcrvddswmxbglvia`.

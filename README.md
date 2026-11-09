@@ -2,6 +2,8 @@
 
 Keep your task and context together when AI providers change.
 
+**Selected product direction:** Switch between the actual ChatGPT, Claude, and Gemini web applications in local Chrome, using a local extension and user-controlled context handoff. First prove a handoff between two apps; desktop support and unattended automation come later. See [the current requirements and implementation sequence](docs/PRODUCT_DIRECTION.md). The existing mock prototype does not yet include the extension or app switching.
+
 **Day-one foundation — mock inference only.** A real React frontend and FastAPI backend save task inputs, exact requirements, routing decisions, results, and activity. The deterministic worker is explicitly labeled; it does not generate an AI answer. Gemini, Cloudflare, image uploads, live streaming, fallback, and durable LangGraph checkpoints are not enabled yet.
 
 Black Fire is the implementation name for the earlier Catalyst plan. LedgerDesk is a superseded alternative.

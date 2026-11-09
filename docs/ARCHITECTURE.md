@@ -1,5 +1,27 @@
 # Black Fire architecture — day one
 
+This document separates the selected browser target from the existing mock implementation. See [the current product direction and workflow](PRODUCT_DIRECTION.md). Provider-API integration work is paused.
+
+## Selected browser target — not implemented yet
+
+```mermaid
+flowchart LR
+  User[User reviews context and sends prompts] --> Workspace[Black Fire task and context workspace]
+  Workspace --> Store[Existing backend and task storage]
+  Workspace --> Extension[Local Chrome extension]
+  Extension --> Tabs[Open or focus selected web app]
+  Tabs --> ChatGPT[ChatGPT web]
+  Tabs --> Claude[Claude web]
+  Tabs --> Gemini[Gemini web]
+  User --> Copy[Explicit copy and paste handoff]
+  Copy --> Tabs
+  Copy --> Workspace
+```
+
+The first milestone controls tabs and prepares portable context while the user reviews and transfers the content. It does not require automated reading of chat pages, a hosted browser, or a model-provider API. Per-site automated capture/submission must be evaluated separately. Native desktop control is deferred.
+
+## Existing mock implementation
+
 ```mermaid
 flowchart LR
   UI[React / TypeScript / Vite] --> API[FastAPI]
@@ -32,7 +54,7 @@ The context capsule preserves the original task and requirements without model s
 
 ## Deferred coordinator
 
-LangGraph remains the selected framework for durable coordination on day two. A tested import attempt on this Windows host failed because application control blocked native `ormsgpack` wheels. A compatible `uuid-utils` wheel resolved a separate import issue, but serializer attempts remained blocked. No system security policy was changed. The working day-one path uses explicit Python route/worker/context steps, with the same state boundaries ready for graph nodes. LangGraph is not installed by the committed lockfiles and is not claimed as implemented.
+LangGraph was selected for the earlier API workflow. For the browser-first milestone it is optional and deferred until durable multi-step execution is needed; it is not the browser controller. A tested import attempt on this Windows host failed because application control blocked native `ormsgpack` wheels. A compatible `uuid-utils` wheel resolved a separate import issue, but serializer attempts remained blocked. No system security policy was changed. The working day-one path uses explicit Python route/worker/context steps. LangGraph is not installed by the committed lockfiles and is not claimed as implemented.
 
 ## API
 
@@ -54,4 +76,4 @@ LangGraph remains the selected framework for durable coordination on day two. A 
 - [Supabase row-level security](https://supabase.com/docs/guides/database/postgres/row-level-security)
 - [LangGraph explicit state graphs](https://docs.langchain.com/oss/python/langgraph/use-graph-api)
 
-Earlier research model names are candidates, not verified account access. Select actual available free model IDs during live smoke testing.
+Earlier research API model names are historical candidates, not verified account access or the active integration target. For the browser milestone, label only the application and model identity that can actually be verified.
