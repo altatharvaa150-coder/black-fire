@@ -41,6 +41,8 @@ Docker was unavailable on the development machine. The Linux CI workflow success
 
 ## Next work
 
+Historical next-work list for the original API direction. The current browser application-manager sequence and implementation checklist are in [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
+
 1. Provision a Supabase demo account and verify the authenticated cloud path with two users.
 2. Configure Gemini, Cloudflare, and Render Free accounts without enabling paid fallbacks. Keep keys in ignored local/server configuration.
 3. Verify actual text/image model access, IDs, quotas, responses, and provider terms. Do not auto-accept Cloudflare vision licensing.

@@ -1,8 +1,27 @@
 # Black Fire architecture — day one
 
-This document separates the selected browser target from the existing mock implementation. See [the current product direction and workflow](PRODUCT_DIRECTION.md). Provider-API integration work is paused.
+This document separates the full unified-manager target, the early assisted validation step, and the existing mock implementation. See [the canonical plan and implementation checklist](IMPLEMENTATION_PLAN.md). Provider-API integration work is paused.
 
-## Selected browser target — not implemented yet
+## Full browser application-manager target — not implemented yet
+
+```mermaid
+flowchart LR
+  Composer[Single Black Fire composer] --> Router[Request, capabilities, observed quota and user policy]
+  Router --> Jobs[Saved connector job and context]
+  Jobs --> Extension[Local Chrome companion]
+  Extension --> GPT[ChatGPT web connector]
+  Extension --> Claude[Claude web connector]
+  Extension --> Gemini[Gemini web connector]
+  GPT --> Result[Actual result and status in Black Fire]
+  Claude --> Result
+  Gemini --> Result
+  Result --> History[Saved context and history]
+  History --> Router
+```
+
+This target requires verified supported/permitted execution and result collection per app. Quota is observed or unknown, not an invented remaining counter. Capability routing and exact model locks must reflect actual account access. TinyFish could be an alternative browser worker; LangGraph could coordinate state, but neither replaces per-app connectors. Neither is implemented or required for the first feasibility test.
+
+## Early assisted validation step — not implemented yet
 
 ```mermaid
 flowchart LR

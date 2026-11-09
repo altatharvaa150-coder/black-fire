@@ -1,6 +1,6 @@
 # Configuration and deployment
 
-**Direction update:** The next milestone is a local Chrome extension with user-controlled handoff between actual web apps. Follow [PRODUCT_DIRECTION.md](PRODUCT_DIRECTION.md). This document records setup for the existing mock foundation; provider API credentials and the live-provider gates below are historical/deferred and are not prerequisites for the browser milestone. Extension installation instructions will be added when the extension exists.
+**Direction update:** The target is one Black Fire workspace managing the actual three AI web apps, including request/capability/observed-quota routing and context preservation. Follow [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md). The next feasibility milestone uses a local Chrome extension and an explicitly assisted workflow. This document records setup for the existing mock foundation; provider API credentials and the live-provider gates below are historical/deferred and are not prerequisites for the browser milestone. Extension installation instructions will be added when the extension exists.
 
 ## Created cloud resource
 

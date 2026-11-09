@@ -1,20 +1,22 @@
-# Black Fire — browser app switching
+# Black Fire — one workspace managing three AI web apps
 
 User clarification, November 9, 2026. This supersedes the earlier API-routing product direction.
+
+**Canonical plan:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) contains the full product scope, user journey, technology choices, code changes, schedule, and checked implementation status. Black Fire is a unified application manager; context handoff is one feature and an early validation step.
 
 ## Selected first target
 
 Build for the actual ChatGPT, Claude, and Gemini web applications in **local Google Chrome**. Use a **local Chrome extension connected to Black Fire** as the first browser companion. Native desktop application support is deferred. This is the recommended implementation direction, not a claim that the extension is already implemented.
 
-For the short hackathon build window, first prove user-controlled context handoff between two web applications. Extend to the third application after that path works. Provider API routing does not replace the app-switching requirement.
+The full target is a single Black Fire composer and result/history view managing the actual three applications. Select and switch applications according to the user's request, verified model capabilities, observed availability/quota, and preferences while preserving context. For the short hackathon build window, first prove a bounded two-app workflow; assisted handoff is an intermediate test, not the completed product. Provider API routing does not replace the app-control requirement.
 
 ## Core requirement
 
-Black Fire should let a user start work in one web application and switch to another while carrying an explicit record of the task and relevant context. The user remains in their own browser and signs into each application directly.
+The user should submit work in Black Fire, have an eligible app/model selected or explicitly chosen, and receive the actual result back in Black Fire through a verified supported connector. A user request, capability need, or observed quota/availability event can trigger an authorized switch. The user remains in their own browser and signs into each application directly. Full automatic execution/result collection is a desired but unverified capability; any assisted steps must stay visible.
 
 Examples include image identification/explanation, conversation, code generation such as binary search, and generating a static website. These are desired capabilities, not features demonstrated by the current prototype.
 
-## Intended experience
+## Early assisted validation workflow
 
 1. The user signs into the selected web applications directly in Chrome. Black Fire does not collect their passwords or copy session cookies to its backend.
 2. The user creates a task in Black Fire and chooses allowed applications and any model preference or lock.
@@ -32,9 +34,9 @@ The portable context record is Black Fire's own record; hidden provider memory o
 
 | Component | Responsibility |
 |---|---|
-| Black Fire workspace | Task input, editable handoff context, application selection, saved progress, exports |
+| Black Fire workspace | Single task/conversation composer and results, routing/switch controls, editable context, attachments, progress, exports |
 | Local Chrome extension | User-invoked tab discovery/open/focus; only the browser permissions needed for the implemented workflow |
-| Existing backend and storage | Persist Black Fire's owned task/context records; no model-provider API calls required for this milestone |
+| Existing backend and storage | Persist owned tasks/context; evolve into application connections, capability/availability observations, routing and connector-job state |
 | Optional later coordinator | Consider LangGraph when durable multi-step execution warrants it; it does not itself control browser tabs |
 | Optional later browser service | Reconsider TinyFish only if a hosted browser, account/session flow, and verified cost fit the project; it is not the selected first connector |
 
@@ -44,7 +46,7 @@ Codex's browser access in this development chat is a testing tool, not an app de
 
 The implemented frontend, FastAPI backend, local history, context records, and mock worker remain a foundation. They do not control any external application. No Chrome extension, TinyFish integration, real app switching, or live model interaction has been implemented.
 
-## Next implementation sequence
+## Early validation sequence — see canonical plan for full implementation
 
 1. Add editable context and an assisted handoff screen to the existing workspace. Build/export the handoff from user-provided content without a model call.
 2. Build the Chrome extension with explicit user-invoked open/focus actions and a clear connection to the Black Fire workspace. Start with tab control; page-content access is not required for this milestone.
@@ -53,7 +55,7 @@ The implemented frontend, FastAPI backend, local history, context records, and m
 5. Add the third application and image handoff. Initial image handling may require the user to reattach the original file in the destination app; do not imply file references transfer the image bytes.
 6. Evaluate provider-specific automation separately before expanding the assisted workflow.
 
-The browser MVP exit gate is a reproducible two-application handoff with saved context and honest manual/automatic labels. A recorded demonstration must show the actual applications, rather than mock provider results.
+The assisted milestone exit gate is a reproducible two-application handoff with saved context and honest manual/automatic labels. It is not the full unified-manager exit gate. A recorded demonstration must show the actual applications, rather than mock provider results. The full definition of done is in [the implementation plan](IMPLEMENTATION_PLAN.md).
 
 ## Sources behind the recommendation
 

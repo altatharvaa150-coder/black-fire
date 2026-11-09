@@ -1,8 +1,8 @@
 # Black Fire
 
-Keep your task and context together when AI providers change.
+One workspace to manage ChatGPT, Claude, and Gemini web apps, route tasks, switch applications, and preserve context.
 
-**Selected product direction:** Switch between the actual ChatGPT, Claude, and Gemini web applications in local Chrome, using a local extension and user-controlled context handoff. First prove a handoff between two apps; desktop support and unattended automation come later. See [the current requirements and implementation sequence](docs/PRODUCT_DIRECTION.md). The existing mock prototype does not yet include the extension or app switching.
+**Full product target:** Submit work and view results in Black Fire while it coordinates the actual ChatGPT, Claude, and Gemini web apps in local Chrome. Routing and authorized switching depend on user requests, verified capabilities, observed quota/availability, and model preferences/locks. A local extension is the selected first connector approach. See the [canonical implementation plan and completion checklist](docs/IMPLEMENTATION_PLAN.md). Assisted handoff is an intermediate validation step; fully automatic operation across all three apps is unverified. The existing mock prototype has no extension or real app control yet.
 
 **Day-one foundation — mock inference only.** A real React frontend and FastAPI backend save task inputs, exact requirements, routing decisions, results, and activity. The deterministic worker is explicitly labeled; it does not generate an AI answer. Gemini, Cloudflare, image uploads, live streaming, fallback, and durable LangGraph checkpoints are not enabled yet.
 
